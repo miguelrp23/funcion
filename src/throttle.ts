@@ -1,16 +1,15 @@
-export function throttle<T extends (...args: unknown[]) => void>(func: T, limit: number):
-(this: ThisParameterType<T>, ...args: Parameters<T>) => void {
-    let lastFunc: number;
+export function throttle(func: Function, limit: number) {
+    let lastFunc: NodeJS.Timeout;
     let lastRan: number;
 
-    return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+    return function(this: any, ...args: any[]) {
         const context = this;
         if (!lastRan) {
             func.apply(context, args);
             lastRan = Date.now();
         } else {
             clearTimeout(lastFunc);
-            lastFunc = window.setTimeout(() => {
+            lastFunc = setTimeout(() => {
                 if ((Date.now() - lastRan) >= limit) {
                     func.apply(context, args);
                     lastRan = Date.now();

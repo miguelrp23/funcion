@@ -17,3 +17,4 @@ como parte de el proyecto se utilizo html, javascript y typescript
 
    bash
    git clone https://github.com/tu-usuario/tu-repositorio.git
+

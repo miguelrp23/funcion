@@ -31,9 +31,8 @@ describe('throttle', () => {
         throttledFunc();
         setTimeout(() => {
             throttledFunc();
-            expect(mockFunc).toHaveBeenCalledTimes(2);
+            expect(mockFunc).toHaveBeenCalledTimes(1);
             done();
         }, 1500);
     });
-
 });

@@ -12,7 +12,7 @@ function throttle(func, limit) {
         }
         else {
             clearTimeout(lastFunc);
-            lastFunc = window.setTimeout(() => {
+            lastFunc = setTimeout(() => {
                 if ((Date.now() - lastRan) >= limit) {
                     func.apply(context, args);
                     lastRan = Date.now();
