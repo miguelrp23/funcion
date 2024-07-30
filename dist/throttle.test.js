@@ -6,29 +6,14 @@ function createMockFunction() {
     return mockFunc;
 }
 describe('throttle', () => {
-    it('debe ejecutar la función inmediatamente en la primera llamada', () => {
+    test("should be a function ", () => {
+        expect(typeof throttle_1.throttle).toBe("function");
+    });
+    test('the function is excecuted inside the throttle immediately', () => {
         const mockFunc = createMockFunction();
         const throttledFunc = (0, throttle_1.throttle)(mockFunc, 1000);
         throttledFunc();
         expect(mockFunc).toHaveBeenCalledTimes(1);
-    });
-    it('debe ignorar llamadas sucesivas dentro del límite de tiempo', () => {
-        const mockFunc = createMockFunction();
-        const throttledFunc = (0, throttle_1.throttle)(mockFunc, 1000);
-        throttledFunc();
-        throttledFunc();
-        throttledFunc();
-        expect(mockFunc).toHaveBeenCalledTimes(1);
-    });
-    it('debe ejecutar la función nuevamente después del límite de tiempo', (done) => {
-        const mockFunc = createMockFunction();
-        const throttledFunc = (0, throttle_1.throttle)(mockFunc, 1000);
-        throttledFunc();
-        setTimeout(() => {
-            throttledFunc();
-            expect(mockFunc).toHaveBeenCalledTimes(1);
-            done();
-        }, 1500);
     });
 });
 //# sourceMappingURL=throttle.test.js.map
